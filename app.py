@@ -89,7 +89,7 @@ def index():
                 elif "5" in tier:
                     return 5
             
-                return 0
+                return 99
             
             
             players.sort(
