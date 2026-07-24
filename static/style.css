@@ -1,5 +1,6 @@
 body {
 
+
     background:#101010;
 
     color:white;
@@ -8,12 +9,14 @@ body {
 
     text-align:center;
 
+
 }
 
 
 
 
 .container {
+
 
     width:90%;
 
@@ -27,16 +30,9 @@ body {
 
     border-radius:20px;
 
-}
-
-
-
-
-h1 {
-
-    font-size:32px;
 
 }
+
 
 
 
@@ -49,15 +45,19 @@ button {
 
     margin:5px;
 
+
     background:#00aaff;
 
     color:white;
+
 
     border:none;
 
     border-radius:10px;
 
+
     cursor:pointer;
+
 
     transition:0.25s;
 
@@ -66,26 +66,32 @@ button {
 
 
 
+
+
 button:hover {
 
 
-    background:#0088cc;
+    background:#0090dd;
 
     transform:translateY(-3px);
 
-    box-shadow:0 8px 20px rgba(0,170,255,.4);
+    box-shadow:0 8px 20px rgba(0,170,255,.35);
 
 
 }
+
 
 
 
 
 button:active {
 
-    transform:scale(.95);
+
+    transform:scale(.96);
+
 
 }
+
 
 
 
@@ -94,15 +100,15 @@ button:active {
 input, select {
 
 
-    padding:12px;
+    padding:10px;
 
     margin:5px;
 
-    width:90%;
-
-    border-radius:8px;
 
 }
+
+
+
 
 
 
@@ -114,11 +120,23 @@ input, select {
 
     padding:20px;
 
-    margin-top:25px;
+    margin-top:20px;
 
     border-radius:15px;
 
-    animation:fadeUp .6s ease;
+
+}
+
+
+
+
+
+
+
+.player-card {
+
+
+    animation:fadeUp 0.5s ease;
 
 
 }
@@ -133,26 +151,31 @@ input, select {
 
     font-size:28px;
 
+    margin-bottom:10px;
+
+
 }
 
 
 
 
 
-.player-head {
+
+/* Tête joueur */
 
 
-    width:100px;
+.head-icon {
 
-    height:100px;
+
+    width:64px;
+
+    height:64px;
+
 
     image-rendering:pixelated;
 
-    margin:15px;
 
-    border-radius:10px;
-
-    animation:headPop .5s ease;
+    margin:10px;
 
 
 }
@@ -160,6 +183,10 @@ input, select {
 
 
 
+
+
+
+/* Tier */
 
 
 .tier-box {
@@ -171,11 +198,18 @@ input, select {
 
     align-items:center;
 
-    gap:15px;
+
+    gap:12px;
+
 
     font-size:22px;
 
+
+    margin:15px;
+
+
 }
+
 
 
 
@@ -184,12 +218,59 @@ input, select {
 .tier-icon {
 
 
-    width:60px;
+    width:45px;
 
-    height:60px;
+    height:45px;
 
 
 }
+
+
+
+
+
+
+
+
+/* Gamemode */
+
+
+.mode-box {
+
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+
+    gap:10px;
+
+
+    margin-top:20px;
+
+
+    font-size:20px;
+
+
+}
+
+
+
+
+
+
+.mode-icon {
+
+
+    width:35px;
+
+    height:35px;
+
+
+}
+
 
 
 
@@ -199,9 +280,6 @@ input, select {
 
 
     color:red;
-
-    margin-top:20px;
-
 
 }
 
@@ -216,45 +294,23 @@ input, select {
 
     from {
 
+
         opacity:0;
 
-        transform:translateY(40px);
+        transform:translateY(25px);
+
 
     }
 
 
+
     to {
+
 
         opacity:1;
 
         transform:translateY(0);
 
-    }
-
-
-}
-
-
-
-
-
-@keyframes headPop {
-
-
-    from {
-
-        opacity:0;
-
-        transform:scale(.3) rotate(-30deg);
-
-    }
-
-
-    to {
-
-        opacity:1;
-
-        transform:scale(1) rotate(0);
 
     }
 
@@ -263,6 +319,10 @@ input, select {
 
 
 
+
+
+
+/* Mobile */
 
 
 @media(max-width:600px){
@@ -270,23 +330,55 @@ input, select {
 
     body {
 
+
         font-size:18px;
 
+        padding:10px;
+
+
     }
+
 
 
     .container {
 
-        width:90%;
+
+        width:95%;
+
 
         padding:20px;
+
+
+        margin:20px auto;
+
 
     }
 
 
-    button,input,select {
 
-        font-size:18px;
+
+    h1 {
+
+
+        font-size:30px;
+
+
+    }
+
+
+
+
+    input, select, button {
+
+
+        width:100%;
+
+
+        font-size:20px;
+
+
+        padding:12px;
+
 
     }
 
