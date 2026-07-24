@@ -384,3 +384,47 @@ input, select {
 
 
 }
+/* Animation de la tête Minecraft */
+
+.head-icon {
+
+    width:64px;
+    height:64px;
+
+    image-rendering:pixelated;
+
+    margin:10px auto;
+
+    animation: headPop 0.6s ease;
+
+}
+
+
+
+@keyframes headPop {
+
+    0% {
+
+        opacity:0;
+
+        transform:scale(0.3) rotate(-20deg);
+
+    }
+
+
+    60% {
+
+        transform:scale(1.15) rotate(5deg);
+
+    }
+
+
+    100% {
+
+        opacity:1;
+
+        transform:scale(1) rotate(0deg);
+
+    }
+
+}
