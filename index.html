@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>MCTiers Randomizer</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<h1>MCTiers Randomizer</h1>
+
+
+<form method="POST">
+
+
+<p>Mode :</p>
+
+<select name="mode">
+
+<option value="sword">Sword</option>
+
+<option value="axe">Axe</option>
+
+<option value="vanilla">Vanilla</option>
+
+<option value="pot">Pot</option>
+
+<option value="smp">SMP</option>
+
+<option value="mace">Mace</option>
+
+
+</select>
+
+
+
+<p>Région :</p>
+
+<select name="region">
+
+<option value="EU">EU</option>
+
+<option value="NA">NA</option>
+
+<option value="AS">AS</option>
+
+</select>
+
+
+
+<p>Pseudo :</p>
+
+<input 
+name="pseudo"
+placeholder="Ex : ItzRealMe"
+>
+
+
+<br><br>
+
+
+<button name="action" value="search">
+🔍 Search
+</button>
+
+
+<button name="action" value="random">
+🎲 Random player
+</button>
+
+
+</form>
+
+
+
+{% if player %}
+
+<div class="card">
+
+
+<h2>
+{{ player["name"] }}
+</h2>
+
+<img
+src="https://minotar.net/helm/{{ player['name'] }}/80"
+width="60">
+
+<p>
+🌍 Region : {{ player["region"] }}
+</p>
+
+
+
+<p>
+    <img 
+src="{{ url_for('static', filename='images/t' + player['tier'] + '.svg') }}"
+width="20">
+Tier {{ player["tier"] }}
+</p>
+
+
+<p>
+    <img
+src="{{ url_for('static', filename='images/' + player['mode'] + '.svg') }}"
+width="20">
+{{ player["mode"]|capitalize }}
+</p>
+
+<p>
+            <img
+src="{{ url_for('static', filename='images/' + player['mode'] + '.svg') }}"
+width="20">
+Ranking {{ player["mode"] }} :
+{{ player.get("rank") }}
+</p>
+
+
+
+</div>
+
+
+{% endif %}
+
+
+
+{% if error %}
+
+<p class="error">
+{{ error }}
+</p>
+
+{% endif %}
+
+
+
+</div>
+
+
+</body>
+
+</html>
