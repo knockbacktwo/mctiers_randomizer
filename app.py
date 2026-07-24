@@ -75,9 +75,26 @@ def index():
 
 
 
+            def tier_value(tier):
+                tier = str(tier).upper()
+            
+                if "1" in tier:
+                    return 1
+                elif "2" in tier:
+                    return 2
+                elif "3" in tier:
+                    return 3
+                elif "4" in tier:
+                    return 4
+                elif "5" in tier:
+                    return 5
+            
+                return 99
+            
+            
             players.sort(
                 key=lambda p: (
-                    int(p.get("tier", 99)),
+                    tier_value(p.get("tier")),
                     int(p.get("pos", 9999))
                 )
             )
