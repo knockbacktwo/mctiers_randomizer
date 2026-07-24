@@ -43,12 +43,9 @@ def index():
 
 
             data = response.json()
-            print(data)
 
             players = []
 
-
-            # Récupération des joueurs
 
             for tier, tier_players in data.items():
 
@@ -67,11 +64,6 @@ def index():
 
 
 
-            print("Total joueurs :", len(players))
-
-
-            # Filtre région
-
             players = [
 
                 p for p in players
@@ -82,11 +74,6 @@ def index():
             ]
 
 
-            print("Joueurs région :", len(players))
-
-
-
-            # Classement région
 
             players.sort(
                 key=lambda p: (
@@ -103,10 +90,7 @@ def index():
 
 
 
-            # Recherche
-
             if action == "search":
-
 
                 result = [
 
@@ -122,17 +106,13 @@ def index():
 
                     player = result[0]
 
-
                 else:
 
                     error = "Joueur introuvable"
 
 
 
-            # Random
-
             elif action == "random":
-
 
                 if players:
 
@@ -144,15 +124,11 @@ def index():
 
 
 
-                print("Joueur choisi :", player)
-
-
-
         except Exception as e:
 
             error = str(e)
 
-            print("Erreur :", e)
+            print(e)
 
 
 
@@ -163,6 +139,7 @@ def index():
     )
 
 
+
 if __name__ == "__main__":
 
     app.run(
@@ -170,4 +147,3 @@ if __name__ == "__main__":
         port=5000,
         debug=True
     )
-
