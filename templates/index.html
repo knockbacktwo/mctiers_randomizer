@@ -166,6 +166,21 @@
 
         </p>
 
+        <div class="gamemode-box">
+
+    <img
+        class="gamemode-icon"
+        src="{{ url_for('static', filename=player.mode + '.svg') }}"
+        alt="{{ player.mode }}"
+    >
+
+    <span>
+        {{ player.mode|capitalize }}
+    </span>
+
+</div>
+
+
 
 
 
