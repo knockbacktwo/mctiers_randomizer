@@ -82,9 +82,17 @@
 
 
         <img 
+        class="player-head"
+        src="https://mc-heads.net/avatar/{{ player.name }}/100"
+        alt="Tête de {{ player.name }}"
+        >
+
+        <img 
         class="tier-icon"
         src="{{ url_for('static', filename='t' + player.tier|string + '.svg') }}"
+        alt="Tier {{ player.tier }}"
         >
+
 
 
         <p>
