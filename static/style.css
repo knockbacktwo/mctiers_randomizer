@@ -1,351 +1,204 @@
-/* =========================
-   GLOBAL
-========================= */
-
-* {
-    box-sizing: border-box;
-}
-
-
 body {
 
-    background: #101010;
-    color: white;
+    background:#101010;
 
-    font-family: Arial, Helvetica, sans-serif;
+    color:white;
 
-    text-align: center;
+    font-family:Arial, sans-serif;
 
-    margin: 0;
-    padding: 0;
+    text-align:center;
 
 }
 
 
-/* =========================
-   CONTAINER
-========================= */
+
 
 .container {
 
-    width: 90%;
-    max-width: 450px;
+    width:90%;
 
-    margin: 60px auto;
+    max-width:420px;
 
-    background: #222;
+    margin:60px auto;
 
-    padding: 30px;
+    background:#222;
 
-    border-radius: 20px;
+    padding:30px;
 
-    box-shadow:
-        0 0 25px rgba(0,170,255,0.15);
-
-    animation: fadeContainer 0.6s ease;
+    border-radius:20px;
 
 }
 
 
-@keyframes fadeContainer {
 
-    from {
-
-        opacity: 0;
-        transform: translateY(-30px);
-
-    }
-
-
-    to {
-
-        opacity: 1;
-        transform: translateY(0);
-
-    }
-
-}
-
-
-/* =========================
-   TITRE
-========================= */
 
 h1 {
 
-    font-size: 36px;
-
-    color: #00aaff;
-
-    text-shadow:
-        0 0 10px #00aaff;
-
-}
-
-
-/* =========================
-   FORMULAIRE
-========================= */
-
-input,
-select {
-
-    width: 90%;
-
-    padding: 12px;
-
-    margin: 8px;
-
-    border-radius: 10px;
-
-    border: none;
-
-    font-size: 16px;
-
-}
-
-
-input:focus,
-select:focus {
-
-    outline: 2px solid #00aaff;
+    font-size:32px;
 
 }
 
 
 
-/* =========================
-   BOUTONS
-========================= */
+
 
 button {
 
-    padding: 14px 25px;
 
-    margin: 8px;
+    padding:12px 20px;
 
+    margin:5px;
 
-    background: #00aaff;
+    background:#00aaff;
 
-    color: white;
+    color:white;
 
+    border:none;
 
-    border: none;
+    border-radius:10px;
 
-    border-radius: 12px;
+    cursor:pointer;
 
+    transition:0.25s;
 
-    font-size: 18px;
-
-    cursor: pointer;
-
-
-    transition:
-        transform 0.2s,
-        background 0.2s,
-        box-shadow 0.2s;
 
 }
+
 
 
 button:hover {
 
-    background: #0088cc;
 
+    background:#0088cc;
 
-    transform:
-        translateY(-4px)
-        scale(1.05);
+    transform:translateY(-3px);
 
+    box-shadow:0 8px 20px rgba(0,170,255,.4);
 
-    box-shadow:
-
-        0 10px 25px
-        rgba(0,170,255,0.5);
 
 }
+
 
 
 
 button:active {
 
-    transform: scale(0.92);
-
-}
-
-
-
-/* =========================
-   CARTE JOUEUR
-========================= */
-
-
-.player-card {
-
-
-    background:
-
-    linear-gradient(
-        145deg,
-        #16052d,
-        #080014
-    );
-
-
-    padding: 25px;
-
-
-    margin-top: 25px;
-
-
-    border-radius: 20px;
-
-
-    border:
-
-    2px solid #00aaff;
-
-
-    box-shadow:
-
-    0 0 20px
-    rgba(0,170,255,0.5);
-
-
-
-    animation:
-
-    playerAppear
-    0.7s ease;
-
-
-}
-
-
-
-@keyframes playerAppear {
-
-
-    from {
-
-
-        opacity:0;
-
-
-        transform:
-
-        translateY(50px)
-        scale(0.8);
-
-
-    }
-
-
-
-    to {
-
-
-        opacity:1;
-
-
-        transform:
-
-        translateY(0)
-        scale(1);
-
-
-    }
+    transform:scale(.95);
 
 }
 
 
 
 
-.player-card:hover {
+
+input, select {
 
 
-    transform:
+    padding:12px;
 
-    scale(1.05);
+    margin:5px;
+
+    width:90%;
+
+    border-radius:8px;
+
+}
 
 
-    box-shadow:
 
-    0 0 40px
-    rgba(0,170,255,0.8);
+
+.card {
+
+
+    background:#0d0420;
+
+    padding:20px;
+
+    margin-top:25px;
+
+    border-radius:15px;
+
+    animation:fadeUp .6s ease;
 
 
 }
 
 
 
-/* =========================
-   IMAGES TIERS
-========================= */
 
 
-img {
 
-    max-width:100%;
+.player-name {
 
-    height:auto;
+
+    font-size:28px;
 
 }
 
 
 
-.player-card img {
 
 
-    width:80px;
+.player-head {
 
 
-    margin:10px;
+    width:100px;
 
+    height:100px;
 
-    animation:
+    image-rendering:pixelated;
 
-    iconFloat
-    2s infinite ease-in-out;
+    margin:15px;
+
+    border-radius:10px;
+
+    animation:headPop .5s ease;
 
 
 }
 
 
 
-@keyframes iconFloat {
 
 
-    0%,100% {
 
-        transform:translateY(0);
-
-    }
+.tier-box {
 
 
-    50% {
+    display:flex;
 
-        transform:translateY(-8px);
+    justify-content:center;
 
-    }
+    align-items:center;
+
+    gap:15px;
+
+    font-size:22px;
 
 }
 
 
 
-/* =========================
-   ERREURS
-========================= */
+
+
+.tier-icon {
+
+
+    width:60px;
+
+    height:60px;
+
+
+}
+
+
+
 
 
 .error {
 
 
-    color:#ff4444;
-
-
-    font-size:18px;
-
+    color:red;
 
     margin-top:20px;
 
@@ -354,120 +207,88 @@ img {
 
 
 
-/* =========================
-   MOBILE
-========================= */
-
-
-@media(max-width:600px) {
-
-
-    body {
-
-        font-size:18px;
-
-        padding:10px;
-
-    }
 
 
 
-    .container {
 
+@keyframes fadeUp {
 
-        width:95%;
-
-
-        margin:20px auto;
-
-
-        padding:20px;
-
-
-    }
-
-
-
-    h1 {
-
-
-        font-size:30px;
-
-
-    }
-
-
-
-    input,
-    select,
-    button {
-
-
-        width:100%;
-
-
-        font-size:20px;
-
-
-        padding:14px;
-
-
-    }
-
-
-
-    button {
-
-
-        min-height:55px;
-
-
-    }
-
-
-
-    .player-card {
-
-
-        width:100%;
-
-
-        padding:20px;
-
-
-    }
-      .tier-icon {
-
-    width: 80px;
-    height: 80px;
-
-    display: block;
-    margin: 20px auto;
-
-    animation: pop 0.5s ease;
-
-}
-
-
-@keyframes pop {
 
     from {
 
-        opacity: 0;
-        transform: scale(0.3) rotate(-20deg);
+        opacity:0;
+
+        transform:translateY(40px);
 
     }
 
 
     to {
 
-        opacity: 1;
-        transform: scale(1) rotate(0deg);
+        opacity:1;
+
+        transform:translateY(0);
 
     }
 
+
 }
 
+
+
+
+
+@keyframes headPop {
+
+
+    from {
+
+        opacity:0;
+
+        transform:scale(.3) rotate(-30deg);
+
+    }
+
+
+    to {
+
+        opacity:1;
+
+        transform:scale(1) rotate(0);
+
+    }
+
+
+}
+
+
+
+
+
+@media(max-width:600px){
+
+
+    body {
+
+        font-size:18px;
+
+    }
+
+
+    .container {
+
+        width:90%;
+
+        padding:20px;
+
+    }
+
+
+    button,input,select {
+
+        font-size:18px;
+
+    }
 
 
 }
