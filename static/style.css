@@ -436,6 +436,37 @@ img {
 
 
     }
+      .tier-icon {
+
+    width: 80px;
+    height: 80px;
+
+    display: block;
+    margin: 20px auto;
+
+    animation: pop 0.5s ease;
+
+}
+
+
+@keyframes pop {
+
+    from {
+
+        opacity: 0;
+        transform: scale(0.3) rotate(-20deg);
+
+    }
+
+
+    to {
+
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+
+    }
+
+}
 
 
 
