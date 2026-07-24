@@ -2,144 +2,112 @@
 <html>
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>MCTiers Randomizer</title>
+    <title>MC Tiers Randomizer</title>
 
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 
 <body>
 
-
 <div class="container">
 
-
-<h1>MCTiers Randomizer</h1>
-
-
-<form method="POST">
+    <h1>MC Tiers Randomizer</h1>
 
 
-<p>Mode :</p>
+    <form method="POST">
 
-<select name="mode">
-
-<option value="sword">Sword</option>
-
-<option value="axe">Axe</option>
-
-<option value="vanilla">Vanilla</option>
-
-<option value="pot">Pot</option>
-
-<option value="smp">SMP</option>
-
-<option value="mace">Mace</option>
+        <select name="mode">
+            <option value="sword">Sword</option>
+            <option value="axe">Axe</option>
+            <option value="mace">Mace</option>
+            <option value="smp">SMP</option>
+            <option value="vanilla">Vanilla</option>
+        </select>
 
 
-</select>
+        <select name="region">
+            <option value="NA">NA</option>
+            <option value="EU">EU</option>
+            <option value="AS">AS</option>
+        </select>
 
 
-
-<p>Région :</p>
-
-<select name="region">
-
-<option value="EU">EU</option>
-
-<option value="NA">NA</option>
-
-<option value="AS">AS</option>
-
-</select>
+        <input 
+            type="text" 
+            name="pseudo" 
+            placeholder="Pseudo joueur"
+        >
 
 
-
-<p>Pseudo :</p>
-
-<input 
-name="pseudo"
-placeholder="Ex : ItzRealMe"
->
+        <button name="action" value="search">
+            Rechercher
+        </button>
 
 
-<br><br>
+        <button name="action" value="random">
+            Joueur aléatoire
+        </button>
 
 
-<button name="action" value="search">
-🔍 Search
-</button>
-
-
-<button name="action" value="random">
-🎲 Random player
-</button>
-
-
-</form>
+    </form>
 
 
 
-{% if player %}
+    {% if error %}
 
-<div class="card">
+    <div class="error">
+        {{ error }}
+    </div>
 
-
-<h2>
-{{ player["name"] }}
-</h2>
-
-<img
-src="https://minotar.net/helm/{{ player['name'] }}/80"
-width="60">
-
-<p>
-🌍 Region : {{ player["region"] }}
-</p>
+    {% endif %}
 
 
 
-<p>
-    <img 
-src="{{ url_for('static', filename='images/t' + player['tier'] + '.svg') }}"
-width="20">
-Tier {{ player["tier"] }}
-</p>
+
+    {% if player %}
+
+    <div class="player-card">
 
 
-<p>
-    <img
-src="{{ url_for('static', filename='images/' + player['mode'] + '.svg') }}"
-width="20">
-{{ player["mode"]|capitalize }}
-</p>
-
-<p>
-            <img
-src="{{ url_for('static', filename='images/' + player['mode'] + '.svg') }}"
-width="20">
-Ranking {{ player["mode"] }} :
-{{ player.get("rank") }}
-</p>
+        <h2 class="player-name">
+            {{ player.name }}
+        </h2>
 
 
-
-</div>
-
-
-{% endif %}
-
+        <img 
+        class="tier-icon"
+        src="{{ url_for('static', filename='t' + player.tier|string + '.svg') }}"
+        >
 
 
-{% if error %}
+        <p>
+            Tier : T{{ player.tier }}
+        </p>
 
-<p class="error">
-{{ error }}
-</p>
 
-{% endif %}
+        <p>
+            Rang régional : #{{ player.rank }}
+        </p>
+
+
+        <p>
+            Région : {{ player.region }}
+        </p>
+
+
+        <p>
+            Position : {{ player.pos }}
+        </p>
+
+
+    </div>
+
+
+    {% endif %}
 
 
 
