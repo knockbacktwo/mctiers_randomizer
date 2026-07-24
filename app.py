@@ -89,13 +89,13 @@ def index():
                 elif "5" in tier:
                     return 5
             
-                return 99
+                return 0
             
             
             players.sort(
                 key=lambda p: (
                     tier_value(p.get("tier")),
-                    int(p.get("pos", 9999))
+                    int(p.get("pos", 999999))
                 )
             )
 
