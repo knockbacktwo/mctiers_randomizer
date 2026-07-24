@@ -2,53 +2,65 @@
 <html>
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>MC Tiers Randomizer</title>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
 </head>
 
 
 <body>
 
+
 <div class="container">
+
 
     <h1>MC Tiers Randomizer</h1>
 
 
+
     <form method="POST">
 
+
         <select name="mode">
+
             <option value="sword">Sword</option>
             <option value="axe">Axe</option>
             <option value="mace">Mace</option>
             <option value="smp">SMP</option>
             <option value="vanilla">Vanilla</option>
-            <option value="pot">Pot</option>
-            <option value="nethpot">NethPot</option>
-            <option value="uhc">UHC</option>
+
         </select>
+
 
 
         <select name="region">
+
             <option value="NA">NA</option>
             <option value="EU">EU</option>
             <option value="AS">AS</option>
+
         </select>
 
 
-        <input 
-            type="text" 
-            name="pseudo" 
+
+        <input
+            type="text"
+            name="pseudo"
             placeholder="Pseudo joueur"
         >
+
 
 
         <button name="action" value="search">
             Rechercher
         </button>
+
 
 
         <button name="action" value="random">
@@ -60,71 +72,142 @@
 
 
 
+
     {% if error %}
 
     <div class="error">
+
         {{ error }}
+
     </div>
 
     {% endif %}
+
+
 
 
 
 
     {% if player %}
 
-    <div class="player-card">
+
+    <div class="card player-card">
+
 
 
         <h2 class="player-name">
+
             {{ player.name }}
+
         </h2>
 
 
-        <img 
-        class="player-head"
-        src="https://mc-heads.net/avatar/{{ player.name }}/100"
-        alt="Tête de {{ player.name }}"
+
+
+
+        <img
+
+            class="player-head"
+
+            src="https://mc-heads.net/avatar/{{ player.name }}/100"
+
+            alt="Tête de {{ player.name }}"
+
         >
 
-        <img 
-        class="tier-icon"
-        src="{{ url_for('static', filename='t' + player.tier|string + '.svg') }}"
-        alt="Tier {{ player.tier }}"
-        >
+
 
 
 
         <p>
-            Tier : T{{ player.tier }}
-        </p>
 
-
-        <p>
-            Rang régional : #{{ player.rank }}
-        </p>
-
-
-        <p>
             Région : {{ player.region }}
+
         </p>
+
+
+
+
+
+        <div class="tier-box">
+
+
+
+            <img
+
+                class="tier-icon"
+
+                src="{{ url_for('static', filename='t' + player.tier|string + '.svg') }}"
+
+                alt="Tier {{ player.tier }}"
+
+            >
+
+
+
+            <span>
+
+                Tier T{{ player.tier }}
+
+            </span>
+
+
+
+        </div>
+
+
+
+
 
 
         <p>
-            Position : {{ player.pos }}
+
+            Position : #{{ player.pos }}
+
         </p>
+
+
 
 
     </div>
+
 
 
     {% endif %}
 
 
 
+
+
 </div>
 
 
+
+
+<script>
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+
+    const card = document.querySelector(".player-card");
+
+
+    if(card){
+
+        card.classList.add("show");
+
+    }
+
+
+});
+
+
+</script>
+
+
+
 </body>
+
 
 </html>
