@@ -20,7 +20,9 @@
 <div class="container">
 
 
-    <h1>MC Tiers Randomizer</h1>
+    <h1>
+        MC Tiers Randomizer
+    </h1>
 
 
 
@@ -49,7 +51,7 @@
 
 
 
-        <input
+        <input 
             type="text"
             name="pseudo"
             placeholder="Pseudo joueur"
@@ -73,13 +75,14 @@
 
 
 
+
     {% if error %}
 
-    <div class="error">
+        <div class="error">
 
-        {{ error }}
+            {{ error }}
 
-    </div>
+        </div>
 
     {% endif %}
 
@@ -94,6 +97,7 @@
     <div class="card player-card">
 
 
+        <!-- Nom -->
 
         <h2 class="player-name">
 
@@ -104,19 +108,23 @@
 
 
 
+        <!-- Tête Minecraft -->
 
         <img
 
-            class="player-head"
+            class="head-icon"
 
-            src="https://mc-heads.net/avatar/{{ player.name }}/100"
+            src="https://mc-heads.net/avatar/{{ player.name }}/64"
 
-            alt="Tête de {{ player.name }}"
+            alt="Tête joueur"
 
         >
 
 
 
+
+
+        <!-- Région -->
 
 
         <p>
@@ -129,8 +137,11 @@
 
 
 
-        <div class="tier-box">
 
+        <!-- Tier -->
+
+
+        <div class="tier-box">
 
 
             <img
@@ -139,10 +150,9 @@
 
                 src="{{ url_for('static', filename='t' + player.tier|string + '.svg') }}"
 
-                alt="Tier {{ player.tier }}"
+                alt="Tier"
 
             >
-
 
 
             <span>
@@ -152,7 +162,6 @@
             </span>
 
 
-
         </div>
 
 
@@ -160,27 +169,45 @@
 
 
 
+        <!-- Position -->
+
+
         <p>
 
-            Position : #{{ player.pos }}
+            Position : {{ player.pos }}
 
         </p>
 
-        <div class="gamemode-box">
-
-    <img
-        class="gamemode-icon"
-        src="{{ url_for('static', filename=player.mode + '.svg') }}"
-        alt="{{ player.mode }}"
-    >
-
-    <span>
-        {{ player.mode|capitalize }}
-    </span>
-
-</div>
 
 
+
+
+
+        <!-- Gamemode -->
+
+
+        <div class="mode-box">
+
+
+            <img
+
+                class="mode-icon"
+
+                src="{{ url_for('static', filename=player.mode + '.svg') }}"
+
+                alt="Mode"
+
+            >
+
+
+            <span>
+
+                {{ player.mode|capitalize }}
+
+            </span>
+
+
+        </div>
 
 
 
@@ -189,7 +216,6 @@
 
 
     {% endif %}
-
 
 
 
@@ -223,6 +249,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 </body>
-
 
 </html>
