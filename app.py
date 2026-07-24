@@ -15,10 +15,12 @@ def index():
 
         mode = request.form.get("mode")
         region = request.form.get("region")
-        pseudo = request.form.get("pseudo", "").strip()
+        pseudo = request.form.get("pseudo", "").strip().lower()
         action = request.form.get("action")
 
+
         url = f"https://mctiers.com/api/v2/mode/{mode}?count=100000"
+
 
         try:
 
@@ -27,7 +29,9 @@ def index():
             print("URL API :", url)
             print("Code API :", response.status_code)
 
+
             if response.status_code != 200:
+
                 error = response.text
 
                 return render_template(
@@ -48,12 +52,17 @@ def index():
                 if not isinstance(tier_players, list):
                     continue
 
+
                 for p in tier_players:
 
                     if isinstance(p, dict):
 
-                        # On ne remplace pas le tier original
+                        # On garde le tier pour l'affichage HTML
+                        p["tier"] = tier_name
+
+                        # Copie pour le tri
                         p["tier_name"] = tier_name
+
                         p["mode"] = mode
 
                         players.append(p)
@@ -70,7 +79,7 @@ def index():
             print("Nombre joueurs :", len(players))
 
 
-            # Classement des tiers
+            # Conversion des tiers
             def tier_value(tier):
 
                 tier = str(tier).upper()
@@ -78,23 +87,23 @@ def index():
                 if "1" in tier:
                     return 1
 
-                if "2" in tier:
+                elif "2" in tier:
                     return 2
 
-                if "3" in tier:
+                elif "3" in tier:
                     return 3
 
-                if "4" in tier:
+                elif "4" in tier:
                     return 4
 
-                if "5" in tier:
+                elif "5" in tier:
                     return 5
 
                 return 99
 
 
 
-            # Tri
+            # Tri par tier puis position
             players.sort(
                 key=lambda p: (
                     tier_value(p.get("tier_name")),
@@ -103,29 +112,37 @@ def index():
             )
 
 
-            # Rang
+            # Ajout du rang
             for i, p in enumerate(players):
+
                 p["rank"] = i + 1
 
 
 
-            # Recherche
+            # Recherche joueur
             if action == "search":
 
                 result = [
                     p for p in players
-                    if p.get("name", "").lower() == pseudo.lower()
+                    if (
+                        p.get("name", "").lower().strip() == pseudo
+                        or
+                        p.get("username", "").lower().strip() == pseudo
+                    )
                 ]
 
+
                 if result:
+
                     player = result[0]
 
                 else:
+
                     error = "Joueur introuvable"
 
 
 
-            # Random
+            # Joueur aléatoire
             elif action == "random":
 
                 if players:
@@ -143,6 +160,7 @@ def index():
         except Exception as e:
 
             error = str(e)
+
             print("ERREUR :", e)
 
 
